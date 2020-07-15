@@ -8,11 +8,9 @@ from datetime import datetime, timedelta
 from itertools import groupby, chain
 import argparse
 import copy
-import re
 
 import yaml
 import requests
-from lxml import etree
 
 # setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)8s %(message)s')
@@ -20,16 +18,17 @@ log = logging.getLogger(__name__)
 
 TIMEOUT = 30
 LANGUAGES = {
+    'afr': 'Afrikaans',
     'eng': 'English',
 }
 # two-letter language codes
 LANGUAGES_2 = {
+    'afr': 'af',
     'eng': 'en',
 }
 
 # Indigo's API configuration
-INDIGO_URL = 'https://indigo.akn4undocs.ipbes.net/v2'
-#INDIGO_URL = 'http://localhost:8000/v2'
+INDIGO_URL = 'https://api.laws.africa/v2'
 INDIGO_AUTH_TOKEN = os.environ.get('INDIGO_API_AUTH_TOKEN')
 if not INDIGO_AUTH_TOKEN:
     log.error("INDIGO_AUTH_TOKEN environment variable is not set.")
@@ -39,10 +38,8 @@ if not INDIGO_AUTH_TOKEN:
 class Updater:
     indigo = requests.Session()
     indigo.headers['Authorization'] = 'Token ' + INDIGO_AUTH_TOKEN
-    search_data = []
 
     def remove_akn(self, work):
-        return
         # remove /akn/
         work['frbr_uri'] = work['frbr_uri'][4:]
         work['expression_frbr_uri'] = work['expression_frbr_uri'][4:]
@@ -63,9 +60,6 @@ class Updater:
         for place in places:
             if not place_codes or place['code'] in place_codes:
                 self.write_place(place)
-
-        with open("_data/search.json", "w") as f:
-            json.dump(self.search_data, f)
 
         with open("_data/places.json", "w") as f:
             json.dump(places, f, indent=2, sort_keys=True)
@@ -122,7 +116,8 @@ class Updater:
                     del expr['toc']
 
             metadata = {
-                'title': place['name'],
+                'title': f"{place['name']} By-laws",
+                'description': f"By-laws for {place['name']}, up-to-date and easy to read and share.",
                 'layout': 'place',
                 'place_code': place['code'],
                 'language': lang,
@@ -248,8 +243,6 @@ class Updater:
 
         # all languages and points in time
         expressions = [exp for pit in work['points_in_time'] for exp in pit['expressions']]
-        if work['stub'] and not expressions:
-            expressions = [work]
 
         # point-in-time dates
         dates = sorted(list(set(x['date'] for x in work['amendments'])))
@@ -308,18 +301,12 @@ class Updater:
                 date = datetime.strptime(dates[ix], '%Y-%m-%d').date() - timedelta(days=1)
                 metadata['in_force_to'] = date.strftime('%Y-%m-%d')
 
-        resp = self.indigo.get(expr['url'] + '.html', params={'resolver': '/'}, timeout=TIMEOUT)
+        resp = self.indigo.get(expr['url'] + '.html', timeout=TIMEOUT)
         resp.raise_for_status()
         # wrap in DIV tags so that markdown doesn't get confused
         html = "<div>" + resp.text + "</div>"
         # rewrite /akn references
-        html = re.sub(r'href="//akn/([^"]+)"', r'href="/akn/\1/eng/"', html)
-
-        if work['frbr_uri'] == '/akn/un/statement/deliberation/mepc/2016-10-28/278-70':
-            # merge in magic references
-            refs = "38(a) 16(2)(d) 16(2)(f)(iii) 16(2)(g)(ii) 16(2)(e)".split()
-            refs_re = re.compile(r'\b(Article (' + '|'.join(re.escape(r) for r in refs) + r'))', flags=re.IGNORECASE)
-            html = refs_re.sub(r'<span class="sec-ref" data-sec-ref="\2">\1</span>', html)
+        html = html.replace('href="/akn/', 'href="/')
 
         with open(fname, "w") as f:
             f.write("---\n")
@@ -328,30 +315,11 @@ class Updater:
             f.write(html)
 
         if not expr['stub']:
-            # only for subsequent expressions
-            if expr['expression_date'] in dates:
-                # write the diff
-                log.info(f"- Fetching diff")
-                resp = self.indigo.get(expr['url'] + '/diff.html', timeout=TIMEOUT)
-                resp.raise_for_status()
-                # wrap in DIV tags so that markdown doesn't get confused
-                html = "<div>" + resp.text + "</div>"
-                html = html.replace('href="/akn/', 'href="/')
-                with open(os.path.join(dirname, "diff.md"), "w") as f:
-                    f.write("---\n")
-                    metadata['layout'] = 'diff'
-                    yaml.dump(metadata, f)
-                    f.write("---\n\n")
-                    f.write(html)
-
             if not self.skip_images:
                 self.write_images(place, expr, dirname)
 
             if not self.skip_archive:
                 self.write_archive_formats(place, expr, dirname)
-
-        if not expr['stub'] and not use_date and not expr['repealed']:
-            self.add_expr_to_search(expr, metadata['toc'])
 
     def write_images(self, place, expr, dirname):
         images = []
@@ -469,42 +437,6 @@ class Updater:
         events.sort(key=lambda e: e['date'], reverse=True)
 
         return events
-
-    def add_expr_to_search(self, expr, toc):
-        """ Add an entry to the search index for each leaf provision in the toc.
-        """
-        resp = self.indigo.get(expr['url'] + '.xml', timeout=TIMEOUT)
-        resp.raise_for_status()
-        data = resp.content
-        xml = etree.fromstring(data)
-
-        def process(entry, title):
-            if title and entry['type'] != 'part':
-                title = title + ' / ' + entry['title']
-            else:
-                title = entry['title']
-
-            if entry.get('children'):
-                # descend
-                for c in entry['children']:
-                    process(c, title)
-            else:
-                # leaf
-                info = {
-                    'url': f'{expr["frbr_uri"]}/eng/#{entry["id"]}',
-                    'work': expr['title'],
-                    'heading': title,
-                    'body': self.get_provision_text(entry, xml),
-                }
-                self.search_data.append(info)
-
-        for e in toc:
-            process(e, '')
-
-    def get_provision_text(self, entry, xml):
-        element = xml.xpath(f'//*[@eId="{entry["id"]}"]')[0]
-        xpath = etree.XPath(".//text()", namespaces={'a': xml.nsmap[None]})
-        return ' '.join(xpath(element))
 
 
 if __name__ == '__main__':
