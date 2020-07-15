@@ -28,8 +28,8 @@ LANGUAGES_2 = {
 }
 
 # Indigo's API configuration
-#INDIGO_URL = 'https://indigo.akn4undocs.ipbes.net/v2'
-INDIGO_URL = 'http://localhost:8000/v2'
+INDIGO_URL = 'https://indigo.akn4undocs.ipbes.net/v2'
+#INDIGO_URL = 'http://localhost:8000/v2'
 INDIGO_AUTH_TOKEN = os.environ.get('INDIGO_API_AUTH_TOKEN')
 if not INDIGO_AUTH_TOKEN:
     log.error("INDIGO_AUTH_TOKEN environment variable is not set.")
