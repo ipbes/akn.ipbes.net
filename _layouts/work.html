@@ -12,19 +12,10 @@ extra_js:
 <header class="{% if page.stub %}{% else %}pb-0{% endif %}">
   <div class="container">
     <div class="header-content">
-      <ol class="list-inline breadcrumbs region">
-        <li>
-          {% if place.special %}
-            <a href="/covid19/">South Africa COVID-19 Regulations</a>
-          {% else %}
-            <a href="/{{ page.place_code }}/{{ page.language }}/">{{ place.name }}</a>
-          {% endif %}
-        </li>
-      </ol>
       <h1>
         {{ page.title }}
         {% if work.repeal %}
-          <span class="badge badge-danger">repealed</span>
+          <span class="badge badge-danger">revoked</span>
         {% endif %}
       </h1>
       {% if work.numbered_title %}
@@ -45,7 +36,7 @@ extra_js:
         <nav class="bylaw-nav">
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-              <a aria-controls="main" aria-selected="true" class="nav-link active" data-toggle="tab" href="#main" id="main-tab" role="tab">By-law</a>
+              <a aria-controls="main" aria-selected="true" class="nav-link active" data-toggle="tab" href="#main" id="main-tab" role="tab">{{ work.type_name }}</a>
             </li>
             <li class="nav-item">
               <a aria-controls="toc" class="nav-link" data-toggle="tab" href="#toc" id="toc-tab" role="tab">
@@ -76,7 +67,7 @@ extra_js:
 </header>
 
 <article>
-  <div class="container">
+  <div class="container-fluid">
     {% if page.languages.size > 1 %}
       <div class="lang-changer">
         Change language:
@@ -96,7 +87,7 @@ extra_js:
     </div>
 
     {% if work.stub %}
-      <article class="akoma-ntoso akoma-ntoso-container stub">
+      <article class="akoma-ntoso akoma-ntoso-container stub country-un">
         {{ content }}
       </article>
       {% include work_stub.html %}
@@ -105,7 +96,7 @@ extra_js:
       <div class="tab-content">
         <div aria-labelledby="main-tab" class="tab-pane fade show active" id="main" role="tabpanel">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
               <nav class="left-nav">
                 <aside>
                   <h5>Download for later</h5>
@@ -114,15 +105,13 @@ extra_js:
                 </aside>
 
                 <aside class="toc">
-                  <h5>Table of Contents</h5>
-
                   {% include toc.html %}
                 </aside>
               </nav>
 
             </div>
             <div class="col-md-8">
-              <article class="akoma-ntoso akoma-ntoso-container" id="top" lang="{{ page.language2 }}">
+              <article class="akoma-ntoso akoma-ntoso-container country-un notes-aside" id="top" lang="{{ page.language2 }}">
                 {{ content }}
               </article>
             </div>
