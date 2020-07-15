@@ -1,5 +1,5 @@
 baseurl: null
-description: 'South Africa''s by-laws: freely available, easy to read and share.'
+description: 'IPBES documents in Akoma Ntoso XML standard.'
 exclude:
 - bin
 - requirements.txt
@@ -9,5 +9,5 @@ markdown: kramdown
 plugins:
 - jekyll-redirect-from
 timezone: Africa/Johannesburg
-title: Open By-laws South Africa
-url: https://capeagulhas.openbylaws.org.za
+title: IPBES documents
+url: https://akn.ipbes.net

@@ -28,8 +28,10 @@ LANGUAGES_2 = {
 }
 
 # Indigo's API configuration
-INDIGO_URL = 'https://api.laws.africa/v2'
-INDIGO_AUTH_TOKEN = os.environ.get('INDIGO_API_AUTH_TOKEN')
+INDIGO_URL='https://indigo.akn4undocs.ipbes.net/api/v2'
+#INDIGO_URL='http://localhost:8000/api/v2'
+INDIGO_AUTH_TOKEN=os.environ.get('INDIGO_API_AUTH_TOKEN')
+#INDIGO_AUTH_TOKEN=''
 if not INDIGO_AUTH_TOKEN:
     log.error("INDIGO_AUTH_TOKEN environment variable is not set.")
     sys.exit(1)
