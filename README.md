@@ -1,4 +1,4 @@
-# akn4.ipbes.net
+# akn.ipbes.net
 
 [![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
 
