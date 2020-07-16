@@ -5,7 +5,7 @@ title: About
 <header>
   <div class="container">
     <div class="header-content">
-      <h1>About openbylaws.org.za</h1>
+      <h1>About IPBES documents</h1>
     </div>
   </div>
 </header>
@@ -14,94 +14,47 @@ title: About
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto">
-        <p class="lead">Open By-laws is a community project to make our by-laws easier to find, read and share.</p>
-
         <p class="lead">
-          Municipal by-laws form part of the legal foundation for effective
-          service delivery and cooperative communities. In many municipalities,
-          however, the by-laws are out of date or difficult to find. Open By-laws
-          helps to solve this problem by working with a contributor community to
-          put up-to-date by-laws online, freely available to everyone.
+          The Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services (IPBES) is an independent intergovernmental body established by States to strengthen the science-policy interface for biodiversity and ecosystem services for the conservation and sustainable use of biodiversity, long-term human well-being and sustainable development. It was established in Panama City, on 21 April 2012 by 94 Governments.  It is not a United Nations body.  However, at the request of the IPBES Plenary and with the authorization of the UNEP Governing Council in 2013, the United Nations Environment Programme (UNEP) provides secretariat services to IPBES.
         </p>
 
         <h3>What are by-laws?</h3>
         <p>
-          By-laws are laws managed by municipalities. <a href="https://myconstitution.co.za/en/07.html#powers-and-functions-of-municipalities">The Constitution of South Africa</a> gives municipalities the power to pass their own legislation, in the form of by-laws, for particular subject areas. These by-laws the same power and force as other national and provincial legislation.
+        IPBES organizes a range of meetings, from sessions to the IPBES Plenary to meetings of task forces and expert groups. This website focuses on Outcomes of and documentation for sessions of the Plenary are publicly available. 
         </p>
 
-        <p>
-          Municipalities are required by the Municipal Systems Act to make their by-laws publicly available on their website. However, most municipalities lack the capacity to do so. Open By-laws helps to fill this gap.
-        </p>
+        <h3>What does this site seek to achieve?</h3>
+        <ul>
+          <li>Improved search through better structured documents</li>
+          <li>Easy to read documents</li>
+          <li>Linking documents</li>
+          <li>Show document history and changes</li>
+          <li>Shift focus from print to other presentation formats that includes print, mobile devices and browsers</li>
+          <li>Linkage to decisions from other organisations</li>
+          <li>Tooltip definitions</li>
+        </ul>
+
 
         <h3>Powered by Laws.Africa</h3>
         <p>
-          Open By-laws is a project of <a href="https://laws.africa">Laws.Africa</a>, a non-profit organisation that curates the African legislation commons and builds technology to enable free access to the law.
+          This project has been made possible thanks to the open source code made available by <a href="https://laws.africa">Laws.Africa</a>, a non-profit organisation that curates the African legislation commons and builds technology to enable free access to the law. Laws.Africa trains and supports a contributor community that is working together to build an African legislation commons and make African law freely available to everyone.
         </p>
 
-        <p>
-        Laws.Africa trains and supports a contributor community that is working together to build an African legislation commons and make African law freely available to everyone.
-        </p>
-
-        <h3>How you can help</h3>
-
-        <p>
-          The by-laws on this website are maintained by a community of contributors. The contributors work hard to put by-laws online and keep them up-to-date. Laws.Africa provides training and support and builds the technology that makes this project possible.
-        </p>
-        <p>
-          <a href="https://laws.africa/faq">Read more about being a contributor</a>.
-        </p>
-
-        <h3 id="contributors">Contributors</h3>
-        <p>
-          An enormous thanks to our contributors and editors:
-        </p>
-
-        <p>
-        Ally Adendorf, Andrew Collier, Christopher Gevers, Cliff Featherstone, Greg Kempe, Juan Barrios, Matt Adendorf, Nqobile Sibisi, Pivendren Naik, Richard Gevers, Tricia Govindasamy.
-        </p>
-
-        <p>
-        In 2013, Open By-laws received a Shuttleworth Flash Grant and an AMI Sandbox Fund grant,
-        and we're grateful to these funders who helped us in our infancy.
-        </p>
-
-        <p>
-        <a href="https://laws.africa/faq">Read more about being a contributor</a>.
-        </p>
 
         <h3 id="disclaimer">Disclaimer</h3>
 
         <p>
-        We aren't lawyers. We don't write these laws, we're just making them available and there may be mistakes.
-        Always get a professional legal opinion.
+        This website is under active development. The documents that have been uploaded here have not yet been edited. Please refer to the (www. <a href="https://www.ipbes.net)">main IPBES website</a> for the latest versions of IPBES documents
         </p>
 
         <h3 id="credits">Credits</h3>
 
         <ul>
           <li>
-            Photo of <a href="https://www.flickr.com/photos/mattharvey1/20654618945">Cape Town by mattharvey1 on flickr</a>
+            <a href="http://github.com/laws-africa/indigo">Indigo: Document conversion code</a>
           </li>
           <li>
-            Photo of <a href="https://www.flickr.com/photos/south-african-tourism/20504209102">eThekwini by south-african-tourism on flickr</a>
-          </li>
-          <li>
-            Photo of <a href="https://www.flickr.com/photos/nico_roets/2547914600">Johannesburg skyline by nico_roets on flickr</a>
-          </li>
-          <li>
-            Photo of <a href="https://www.flickr.com/photos/130467353@N06/17337369662">Cape Agulhas lighthouse by Allan Watt on flickr</a>
-          </li>
-          <li>
-            Photo of Mbizana from <a href="http://www.mbizana.gov.za/">Mbizana Municipality website</a>
-          </li>
-          <li>
-            Photo of <a href="https://www.flickr.com/photos/jbdodane/15177717355">Velddrif in Bergrivier by jbdodane on flickr</a>
-          </li>
-          <li>
-            Photo of <a href="https://www.flickr.com/photos/sa-venues/3862797198">Cederberg by SA-Venues.com on flickr</a>
-          </li>
-          <li>
-            Photo of <a href="https://www.flickr.com/photos/robwallace/2249636397">Calitzdorp in Kannaland by Robert Wallace on flickr</a>
+            <a href="https://github.com/laws-africa/openbylaws.org.za">Document presentation code</a>
           </li>
         </ul>
       </div>

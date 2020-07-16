@@ -3,23 +3,20 @@
     <div class="row">
       <div class="col-md-6">
         <nav class="mb-3">
-          <h5>Openbylaws.org.za</h5>
+          <h5>akn.ipbes.net</h5>
           <p>
-          Open By-laws is a community effort to make South African by-laws easy to find, ready and share. <a href="/about.html">Find out more</a>.
+          This is a pilot project to make IPBES documents easy to find, read and share. The system seeks to implement document standards based on Akoma Ntoso<a href="https://unsceb-hlcm.github.io/part1/" target="_blank"> Find out more</a>.
           </p>
-          <p>
-          Thank you to <a href="/about.html#contributors">our contributors</a>. Much love.
+          <img src="/img/logo.svg" style="max-width: 150px">
+          <p class="small">
+            Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services
           </p>
-          <p>
-          A project by <a href="https://laws.africa">Laws.Africa</a>.
-          </p>
-          <img src="/img/logo-lg.png" style="max-width: 75px">
         </nav>
       </div>
 
       <div class="col-md-3">
         <nav class="mb-3">
-          <h5>Municipalities</h5>
+          <h5>Documents</h5>
           <ul>
             {% assign places = site.data.places | sort: "name" %}
             {% for place in places %}
@@ -37,57 +34,51 @@
         <h5>Contact Us</h5>
         <ul>
           <li>
-            <a href="https://twitter.com/OpenByLawsZA">
+            <a href="https://twitter.com/IPBES">
               <i class="fab fa-twitter"></i>
-              @OpenByLawsZA on Twitter
+              @ipbes on Twitter
             </a>
           </li>
           <li>
-            <a href="https://facebook.com/openbylaws.org.za">
+            <a href="https://www.facebook.com/ipbes">
               <i class="fab fa-facebook-square"></i>
-              Open By-laws on Facebook
+              IPBES on Facebook
             </a>
           </li>
         </ul>
-        <ul>
+        <ul> 
           <li>
-            <a href="/contact.html">Contact Us</a>
+            <i class="fa-li fa fa-envelope"></i>
+          <a href="mailto:ipbes.registration@ipbes.net">ipbes.registration@ipbes.net</a>
           </li>
         </ul>
-        <p>
-        We aren't lawyers and cannot offer legal support. Always get a professional legal opinion.
-        </p>
-        <div>
-          Subscribe to the Laws.Africa newsletter:
+    </div>
+  </div>
+  <div class="bg-dark py-5">
+    <div class="row">
+      <div class="col-md-9 mx-auto">
+        <div class="row partner-logos">
+          <div class="col">
+            <a href="https://www.unenvironment.org/" target="_blank">
+              <img src="/img/logo-unep.svg">
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://en.unesco.org/" target="_blank">
+              <img src="/img/logo-unesco.svg">
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://www.fao.org/home/en" target="_blank">
+              <img src="/img/logo-fao.svg">
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://www.undp.org/" target="_blank">
+              <img src="/img/logo-undp.svg">
+            </a>
+          </div>
         </div>
-        {% include newsletter.html %}
-      </div>
-    </div>
-
-    <hr class="my-3">
-
-    <div class="row">
-      <div class="col-sm-9">
-        The HTML and XML legislation documents are licensed under
-        a <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International License</a>.
-      </div>
-      <div class="col-sm-3 text-right">
-        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">
-          <img alt="Creative Commons License" src="https://licensebuttons.net/l/by/3.0/88x31.png" style="border-width:0">
-        </a>
-      </div>
-    </div>
-
-    <hr class="my-3">
-
-    <div class="row">
-      <div class="col-md-8">
-        <p class="small">
-        Laws.Africa is a non-profit organisation registered with the South African Department of Social Development, registration number 216-824 NPO.
-        </p>
-      </div>
-      <div class="col-md-4 text-right">
-        <img alt="Laws.Africa logo" src="/img/lawsafrica-logo-horizontal.png" width="200px">
       </div>
     </div>
   </div>
