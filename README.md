@@ -1,8 +1,8 @@
-# akn4undocs.ipbes.net
+# akn4.ipbes.net
 
 [![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
 
-This repo is the openbylaws.org.za website, based on Jekyll. There are two major steps to building this website:
+This repo is the akn.ipbes.net website, based on Jekyll. There are two major steps to building this website:
 
 1. `bin/update.py` is a Python script which pulls by-law information from Laws.Africa and sets up the appropriate Jekyll site structure.
 2. `jekyll build` builds the website as a regular Jekyll website.
