@@ -1,6 +1,6 @@
 # akn.ipbes.net
 
-[![Build Status](https://travis-ci.com/laws-africa/openbylaws.org.za.svg?branch=master)](http://travis-ci.com/laws-africa/openbylaws.org.za)
+[![Build Status](https://travis-ci.com/ipbes/akn.ipbes.net.svg?branch=master)](https://travis-ci.com/github/ipbes/akn.ipbes.net)
 
 This repo is the akn.ipbes.net website, based on Jekyll. There are two major steps to building this website:
 
