@@ -8,6 +8,6 @@ exclude:
 markdown: kramdown
 plugins:
 - jekyll-redirect-from
-timezone: Africa/Johannesburg
+timezone: Europe/Amsterdam
 title: IPBES documents
 url: https://akn.ipbes.net
